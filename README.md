@@ -1,1 +1,0 @@
-creativity_course_code
