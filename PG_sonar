@@ -1,0 +1,21 @@
+import time
+import board
+import analogio
+ 
+mv_inch_3v = 6.4
+
+# Select which pad you attached to the analog sonar output to.
+pad = analogio.AnalogIn(board.A1)
+
+def distance(pin, cm=False):
+    voltage =  (pin.value * 3.3) / 65536
+    distance = (voltage * 1000) / 6.4
+    if cm: distance = distance * 2.54
+    return distance
+    
+    
+while True:
+    d = distance(pad)
+    print(d)
+    time.sleep(0.5)
+ 
